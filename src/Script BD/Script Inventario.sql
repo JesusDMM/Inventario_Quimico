@@ -1,30 +1,30 @@
-create database Inventario_Quimico;
-use Inventario_Quimico;
+create database Inventario;
+use Inventario;
 create table Personal (
 	id int primary key not null auto_increment,
     Nombre varchar(80) not null,
-    Matricula varchar(10) not null,
-    Cargo varchar(20) not null
+    Contraseña varchar (20) not null
 );
 create table Material (
 	id int not null primary key auto_increment,
     Nombre text not null,
-    Tipo text not null,
-    Marca text not null,
-    Modelo text not null,
-    Serie text not null,
+    Tipo varchar(80) not null,
+    Marca Varchar(80) not null,
+    Modelo varchar(80) not null,
+    Serie varchar(80) not null,
     Cantidad int not null,
     Ubicacion text not null,
     Especificaciones text not null
 );
 Create table Historial (
 	id int not null primary key auto_increment,
-    id_Material int not null,
-    id_Personal int not null,
     Fecha_I date not null,
     Fecha_F date,
+    Nombre Varchar(100) not null,
+    Matricula varchar(10) not null,
+    id_Material int not null,
     Cantidad int not null,
-    Devuelto TINYINT(1) not null,
+    Devuelto TINYINT(1),
     foreign key (id_Material) references Material (id)
 );
 
@@ -140,5 +140,5 @@ Insert into Material values(0, 'PAPEL PARAFILM 10 CM X 38 METROS', 'Consumibles'
 ,(0, 'PAPEL INDICADOR DE PH -14, CON 100 TIRAS', 'Consumibles', 'FREEMONT', 'SD', 'SD', 1, 'LABORATORIO DE QUIMICA', 'CAJA DISPENSADORA DE PLÁSTICO')
 ,(0, 'PAPEL INDICADOR DE PH -14, CON 100 TIRAS', 'Consumibles', 'FREEMONT', 'SD', 'SD', 1, 'LABORATORIO DE QUIMICA', 'CAJA DISPENSADORA DE PLÁSTICO');
 
-/*Mostrar todos los datos de la tabla material*/
-Select * from Material;
+/*Insertar el unico usuario disponible*/
+insert into Personal values (0,'Tec Mante','Tecky');
