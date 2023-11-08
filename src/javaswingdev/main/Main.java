@@ -2,9 +2,11 @@ package javaswingdev.main;
 
 import java.awt.Component;
 import javaswingdev.form.Form_Dashboard;
-import javaswingdev.form.Form_Empty1_1;
-import javaswingdev.form.Soluciones;
-import javaswingdev.form.Equipo_De_Medicion;
+import javaswingdev.form.Inventario_Actualizar;
+import javaswingdev.form.Inventario_Agregar;
+import javaswingdev.form.Inventario_Eliminar;
+import javaswingdev.form.Prestamo_Alumno;
+import javaswingdev.form.Prestamo_Maestro;
 import javaswingdev.menu.EventMenuSelected;
 
 public class Main extends javax.swing.JFrame {
@@ -25,13 +27,17 @@ public class Main extends javax.swing.JFrame {
                 if (index == 0 && indexSubMenu == 0) {
                     showForm(new Form_Dashboard());
                 } else if (index == 1 && indexSubMenu == 1) {
-                    showForm(new Form_Empty1_1(index + " " + indexSubMenu));
-                } else if (index == 2 && indexSubMenu == 0) {
-                    showForm(new Soluciones(index + " " + indexSubMenu));
+                    showForm(new Inventario_Agregar(index + " " + indexSubMenu));
+                } else if (index == 1 && indexSubMenu == 2) {
+                    showForm(new Inventario_Actualizar(index + " " + indexSubMenu));
+                } else if (index == 1 && indexSubMenu == 3) {
+                    showForm(new Inventario_Eliminar(index + " " + indexSubMenu));
+                }else if (index ==2  && indexSubMenu == 0) {
+                    showForm(new Prestamo_Alumno(index + " " + indexSubMenu));
                 }else if (index == 3 && indexSubMenu == 0) {
-                    showForm(new Equipo_De_Medicion(index + " " + indexSubMenu));
-                } else {
-                     showForm(new Form_Empty1_1(index + " " + indexSubMenu));
+                    showForm(new Prestamo_Maestro(index + " " + indexSubMenu));
+                }else {
+                    showForm(new Inventario_Actualizar(index + " " + indexSubMenu));
 
                 }
             }

@@ -22,7 +22,7 @@ public class Menu extends JPanel {
     public Menu() {
         init();
     }
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     private void init() {
         setBackground(Color.WHITE);
         setLayout(new BorderLayout());
@@ -35,9 +35,10 @@ public class Menu extends JPanel {
         addTitle("Resumen de Invenario");
         addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.DASHBOARD, "General"));
         addTitle("Inventarios");
-        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.HOURGLASS_EMPTY, "Materiales de Vidiro"));
-        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.LOCAL_DRINK, "Soluciones"));
-        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.COLORIZE, "Equipos de medición"));
+        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.DESCRIPTION, "Producto", "Agregar", "Modificar", "Actualizar"));
+        addTitle("Prestamos");
+        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.PERSON, "A un alumno"));  
+        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.ACCOUNT_BOX, "A un maestro"));  
        
         addTitle("Sesion");
         addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.ERROR_OUTLINE, "Cerrar sesión", "Salir al login", "Registrarse"));
