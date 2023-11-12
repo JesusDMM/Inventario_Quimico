@@ -4,10 +4,9 @@ import java.awt.Component;
 import javaswingdev.form.Form_Dashboard;
 import javaswingdev.form.Inventario_Actualizar;
 import javaswingdev.form.Inventario_Agregar;
-import javaswingdev.form.Inventario_Eliminar;
-import javaswingdev.form.Prestamo_Alumno;
-import javaswingdev.form.Prestamo_Maestro;
+import javaswingdev.form.Prestamo;
 import javaswingdev.menu.EventMenuSelected;
+import inventario_quimico.login;
 
 public class Main extends javax.swing.JFrame {
 
@@ -26,18 +25,16 @@ public class Main extends javax.swing.JFrame {
             public void menuSelected(int index, int indexSubMenu) {
                 if (index == 0 && indexSubMenu == 0) {
                     showForm(new Form_Dashboard());
-                } else if (index == 1 && indexSubMenu == 1) {
+                } else if (index == 1 && indexSubMenu == 0) {
                     showForm(new Inventario_Agregar(index + " " + indexSubMenu));
-                } else if (index == 1 && indexSubMenu == 2) {
+                } else if (index == 2 && indexSubMenu == 0) {
                     showForm(new Inventario_Actualizar(index + " " + indexSubMenu));
-                } else if (index == 1 && indexSubMenu == 3) {
-                    showForm(new Inventario_Eliminar(index + " " + indexSubMenu));
-                }else if (index ==2  && indexSubMenu == 0) {
-                    showForm(new Prestamo_Alumno(index + " " + indexSubMenu));
-                }else if (index == 3 && indexSubMenu == 0) {
-                    showForm(new Prestamo_Maestro(index + " " + indexSubMenu));
+                } else if (index == 3  && indexSubMenu == 0) {
+                    showForm(new Prestamo(index + " " + indexSubMenu));
+                }else if (index == 4 && indexSubMenu == 1) {
+                    showForm(new login());
                 }else {
-                    showForm(new Inventario_Actualizar(index + " " + indexSubMenu));
+                    showForm(new Form_Dashboard());
 
                 }
             }

@@ -33,13 +33,12 @@ public class Menu extends JPanel {
         scroll.setViewportBorder(null);
         add(scroll);
         addTitle("Resumen de Invenario");
-        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.DASHBOARD, "General"));
+        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.DASHBOARD, "Información General"));
         addTitle("Inventarios");
-        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.DESCRIPTION, "Producto", "Agregar", "Modificar", "Actualizar"));
+        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.ADD_CIRCLE, "Agregar"));
+        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.EDIT, "Mdificar"));
         addTitle("Prestamos");
-        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.PERSON, "A un alumno"));  
-        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.ACCOUNT_BOX, "A un maestro"));  
-       
+        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.PERSON, "Prestar prodcuto"));  
         addTitle("Sesion");
         addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.ERROR_OUTLINE, "Cerrar sesión", "Salir al login", "Registrarse"));
     }
