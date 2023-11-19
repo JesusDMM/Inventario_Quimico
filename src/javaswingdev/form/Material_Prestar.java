@@ -8,7 +8,7 @@ package javaswingdev.form;
  *
  * @author Jaime Tec
  */
-public class Material_Prestar extends javax.swing.JPanel {
+public class Material_Prestar extends javax.swing.JFrame {
 
     /**
      * Creates new form Material_Disponer

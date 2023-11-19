@@ -1,10 +1,46 @@
 package javaswingdev.form;
 
+import inventario_quimico.BD;
+import java.awt.Image;
+import java.io.File;
+import java.io.FileInputStream;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+
 public class Inventario_Agregar extends javax.swing.JPanel {
+
+    JFileChooser archivo;
+    String rutaDelArchivo = "";
+    String nombre_archivo = "";
+    DefaultTableModel modelo_materiales = new DefaultTableModel();
+    boolean bandera_foto = false;
 
     public Inventario_Agregar(String name) {
         initComponents();
-   
+        modelo_materiales.setColumnCount(0);
+        modelo_materiales.addColumn("ID");
+        modelo_materiales.addColumn("Nombre");
+        modelo_materiales.addColumn("Tipo");
+        modelo_materiales.addColumn("Marca");
+        modelo_materiales.addColumn("Modelo");
+        modelo_materiales.addColumn("Serie");
+        modelo_materiales.addColumn("Cantidad");
+        modelo_materiales.addColumn("Ubicacion");
+        modelo_materiales.addColumn("Especificaciones");
+        modelo_materiales.addColumn("Codigo_foto");
+        table1.setModel(modelo_materiales);
+        Mostrar_materiales();
+    }
+
+    public void Mostrar_materiales() {
+        modelo_materiales.setRowCount(0);
+        BD bd = new BD();
+        modelo_materiales = bd.mostrar_materiales(modelo_materiales);
+        table1.setModel(modelo_materiales);
     }
 
     @SuppressWarnings("unchecked")
@@ -16,7 +52,6 @@ public class Inventario_Agregar extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -28,7 +63,6 @@ public class Inventario_Agregar extends javax.swing.JPanel {
         jLabel12 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        jTextFieldRound1 = new jtextfieldround.JTextFieldRound();
         jTextFieldRound2 = new jtextfieldround.JTextFieldRound();
         jTextFieldRound3 = new jtextfieldround.JTextFieldRound();
         jTextFieldRound4 = new jtextfieldround.JTextFieldRound();
@@ -37,6 +71,8 @@ public class Inventario_Agregar extends javax.swing.JPanel {
         jTextFieldRound7 = new jtextfieldround.JTextFieldRound();
         jComboBox2 = new javax.swing.JComboBox<>();
         jButton2 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         table1 = new javaswingdev.swing.table.Table();
@@ -78,10 +114,6 @@ public class Inventario_Agregar extends javax.swing.JPanel {
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel2.setToolTipText("");
 
-        jLabel1.setBackground(new java.awt.Color(0, 51, 102));
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel1.setText("ID:");
-
         jLabel4.setBackground(new java.awt.Color(0, 51, 102));
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel4.setText("Tipo:");
@@ -102,7 +134,7 @@ public class Inventario_Agregar extends javax.swing.JPanel {
         jLabel9.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel9.setText("Serie:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cristal", "Metal_Gas", "Polimero", "Porcela", "Equipo_Electrico", "Material_Imantado", "Seguridad", "Sustancias", "Limpieza", "Consumibles" }));
 
         jLabel10.setBackground(new java.awt.Color(0, 51, 102));
         jLabel10.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -117,12 +149,24 @@ public class Inventario_Agregar extends javax.swing.JPanel {
         jLabel12.setText("Foto:");
 
         jButton1.setText("Buscar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel7.setText("jLabel7");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "LABORATORIO DE QUIMICA", "ALMACEN" }));
 
         jButton2.setText("AGREGAR");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Especificaciones");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -148,13 +192,9 @@ public class Inventario_Agregar extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jTextFieldRound5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldRound1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(121, 121, 121)
@@ -164,13 +204,16 @@ public class Inventario_Agregar extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jTextFieldRound2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel3))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jTextFieldRound7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                    .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jTextField1))))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -187,9 +230,10 @@ public class Inventario_Agregar extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(13, 13, 13)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextFieldRound1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(3, 3, 3)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
@@ -289,22 +333,114 @@ public class Inventario_Agregar extends javax.swing.JPanel {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        //agregar un producto (funciona)
+        try {
+            String Nombre = jTextFieldRound3.getText();
+            String Tipo = jComboBox1.getSelectedItem().toString();
+            String Marca = jTextFieldRound4.getText();
+            String Modelo = jTextFieldRound5.getText();
+            String Serie = jTextFieldRound6.getText();
+            int Cantidad = Integer.parseInt(jTextFieldRound7.getText());
+            String Ubicacion = jComboBox1.getSelectedItem().toString();
+            String Especificaciones = jTextField1.getText();
+            if (Comprobar_datos_faltantes(Nombre, Tipo, Marca, Modelo, Serie, Cantidad, Ubicacion)) {
+                try {
+                    BD bd = new BD();
+                    boolean bandera = bd.Ingresar_Producto(Nombre, Tipo, Marca, Modelo,
+                            Serie, Cantidad, Ubicacion, Especificaciones);
+                    if (bandera) {
+                        JOptionPane.showMessageDialog(null, "Se inserto un elemento");
+                        if (bandera_foto) {
+                            File imageFile = new File(rutaDelArchivo);
+                            FileInputStream Imagen_insertar = new FileInputStream(imageFile);
+                            int ID = bd.buscar_id_material(Nombre);
+                            if (ID == 0) {
+                                JOptionPane.showMessageDialog(null, "Ocurrio un error con el material y no se guardo la foto");
+                            } else {
+                                boolean Actualizacion_foto = bd.Actualizar_Foto_Producto(ID, Imagen_insertar, imageFile);
+                                if (Actualizacion_foto == false) {
+                                    JOptionPane.showMessageDialog(null, "Elemento de imagen no valido, ingrese otra imagen compatible");
+                                }
+                                bandera_foto = false;
+                            }
+                        }
+                        Mostrar_materiales();
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Ocurrio un error");
+                    }
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Elemento de imagen no valido, ingrese otra imagen compatible");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Falta de ingresar datos");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Ingresa los datos de forma correcta");
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        archivo = new JFileChooser(System.getProperty("base.png"));
+        FileNameExtensionFilter imageFilter = new FileNameExtensionFilter("Archivos de Imagen", "jpg", "jpeg", "png");
+        archivo.setFileFilter(imageFilter);
+        int resultado = archivo.showOpenDialog(null);
+        if (resultado == JFileChooser.APPROVE_OPTION) {
+            rutaDelArchivo = archivo.getSelectedFile().getAbsolutePath();
+            nombre_archivo = archivo.getSelectedFile().getName();
+            jTextFieldRound2.setText(nombre_archivo);
+            ImageIcon icono_seleccionado = new ImageIcon(rutaDelArchivo);
+            Image imagen = icono_seleccionado.getImage();
+            Image imagenRedimensionada = imagen.getScaledInstance(jLabel7.getWidth(), jLabel7.getHeight(), Image.SCALE_SMOOTH);
+            ImageIcon iconoRedimensionado = new ImageIcon(imagenRedimensionada);
+            jLabel7.setIcon(iconoRedimensionado);
+            bandera_foto = true;
+        } else if (resultado == JFileChooser.CANCEL_OPTION) {
+            JOptionPane.showMessageDialog(null, "No se selecciono una fotografia");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+    public boolean Comprobar_datos_faltantes(String nombre, String Tipo, String Marca, String Modelo,
+            String Serie, int cantidad, String Ubicacion) {
+        if (nombre.equals("")) {
+            return false;
+        }
+        if (Tipo.equals("")) {
+            return false;
+        }
+        if (Marca.equals("")) {
+            return false;
+        }
+        if (Modelo.equals("")) {
+            return false;
+        }
+        if (Serie.equals("")) {
+            return false;
+        }
+        if (cantidad < 0) {
+            return false;
+        }
+        if (Ubicacion.equals("")) {
+            return false;
+        }
+        return true;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -317,7 +453,7 @@ public class Inventario_Agregar extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private jtextfieldround.JTextFieldRound jTextFieldRound1;
+    private javax.swing.JTextField jTextField1;
     private jtextfieldround.JTextFieldRound jTextFieldRound2;
     private jtextfieldround.JTextFieldRound jTextFieldRound3;
     private jtextfieldround.JTextFieldRound jTextFieldRound4;

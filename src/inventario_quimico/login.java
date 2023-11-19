@@ -5,6 +5,9 @@
  */
 package inventario_quimico;
 
+import javaswingdev.main.Main;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ME1
@@ -172,6 +175,11 @@ public class login extends javax.swing.JFrame {
         jButton1.setForeground(new java.awt.Color(255, 51, 51));
         jButton1.setText("LOGIN");
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 306, 341, 40));
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
@@ -224,6 +232,22 @@ public class login extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_formWindowOpened
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        //Iniciar sesion
+        String Nombre_Usuario = txtusername.getText();
+        String Contraseña_Usuario = txtpassword.getText();
+        System.out.println(Contraseña_Usuario);
+        BD acceso_bd = new BD ();
+        boolean Permiso = acceso_bd.Inicio_Sesion(Nombre_Usuario, Contraseña_Usuario);
+        if (Permiso == true){
+            Main Pantalla_Inicio = new Main ();
+            Pantalla_Inicio.setVisible(Permiso);
+            this.dispose();
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "Credenciales incorrectas, Ingrese correctamente las credenciales de sesión");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
    /**
      * @param args the command line arguments
      */

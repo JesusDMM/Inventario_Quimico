@@ -142,3 +142,15 @@ Insert into Material values(0, 'PAPEL PARAFILM 10 CM X 38 METROS', 'Consumibles'
 
 /*Insertar el unico usuario disponible*/
 insert into Personal values (0,'Tec Mante','Tecky');
+
+/*Agregarle el apartado de foto a Material*/
+Alter table Material add (Foto MEDIUMBLOB);
+
+/*Crear una tabla de Nombres de devolucion*/
+create table Devolucion (
+	id int ,
+    nombre text
+);
+
+/*Insertar elementos*/
+insert into Devolucion values (1,"Devuelto"), (0,"No Devuelto");
