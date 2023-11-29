@@ -24,17 +24,13 @@ public class Main extends javax.swing.JFrame {
             @Override
             public void menuSelected(int index, int indexSubMenu) {
                 if (index == 0 && indexSubMenu == 0) {
-                    showForm(new Form_Dashboard());
+                     showForm(new Inventario_Agregar(index + " " + indexSubMenu));
                 } else if (index == 1 && indexSubMenu == 0) {
-                    showForm(new Inventario_Agregar(index + " " + indexSubMenu));
+                      showForm(new Inventario_Actualizar(index + " " + indexSubMenu));
                 } else if (index == 2 && indexSubMenu == 0) {
-                    showForm(new Inventario_Actualizar(index + " " + indexSubMenu));
-                } else if (index == 3  && indexSubMenu == 0) {
-                    showForm(new Prestamo(index + " " + indexSubMenu));
-                }else if (index == 4 && indexSubMenu == 1) {
-                    showForm(new login());
+                     showForm(new Prestamo(index + " " + indexSubMenu));
                 }else {
-                    showForm(new Form_Dashboard());
+                    showForm(new Inventario_Agregar(index + " " + indexSubMenu));
 
                 }
             }
