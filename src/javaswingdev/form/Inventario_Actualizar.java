@@ -25,6 +25,7 @@ public class Inventario_Actualizar extends javax.swing.JPanel {
 
     public Inventario_Actualizar(String name) {
         initComponents();
+        jTextFieldRound1.setEnabled(false);
         modelo_materiales.setColumnCount(0);
         modelo_materiales.addColumn("ID");
         modelo_materiales.addColumn("Nombre");
@@ -350,10 +351,10 @@ public class Inventario_Actualizar extends javax.swing.JPanel {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 1050, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

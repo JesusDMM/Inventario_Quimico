@@ -21,6 +21,7 @@ public class Prestamo extends javax.swing.JPanel {
     public Prestamo(String name) {
         initComponents();
         jComboBox1.removeAllItems();
+        jTextField1.setEnabled(false);
         BD bd = new BD();
         Vector<String> productos = new Vector<String>();
         productos = bd.mostrar_materiales();
@@ -180,6 +181,11 @@ public class Prestamo extends javax.swing.JPanel {
         jButton3.setBorderPainted(false);
         jButton3.setContentAreaFilled(false);
         jButton3.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Botones/Limpiar_Presionado.png"))); // NOI18N
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 480, 181, -1));
         jPanel2.add(jTextFieldRound1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 20, -1, 40));
         jPanel2.add(jTextFieldRound2, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 70, -1, 40));
@@ -209,7 +215,9 @@ public class Prestamo extends javax.swing.JPanel {
             }
         });
         jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 480, 165, -1));
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(195, 25, 153, -1));
+
+        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(195, 15, 260, 30));
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No Devuelto", "Devuelto" }));
         jComboBox2.addActionListener(new java.awt.event.ActionListener() {
@@ -431,6 +439,13 @@ public class Prestamo extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Ingresa los datos correctamente");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // borrar los datos
+        jTextFieldRound1.setText("");
+        jTextFieldRound2.setText("");
+        jTextFieldRound3.setText("");
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.raven.datechooser.DateChooser dateChooser1;
