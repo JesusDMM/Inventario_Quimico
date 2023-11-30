@@ -237,7 +237,7 @@ public class login extends javax.swing.JFrame {
         //Iniciar sesion
         String Nombre_Usuario = txtusername.getText();
         String Contraseña_Usuario = txtpassword.getText();
-        System.out.println(Contraseña_Usuario);
+        ///System.out.println(Contraseña_Usuario);
         BD acceso_bd = new BD ();
         boolean Permiso = acceso_bd.Inicio_Sesion(Nombre_Usuario, Contraseña_Usuario);
         if (Permiso == true){

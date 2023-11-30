@@ -1,6 +1,10 @@
 package javaswingdev.main;
 
 import java.awt.Component;
+<<<<<<< HEAD
+=======
+//import javaswingdev.form.Form_Dashboard;
+>>>>>>> 06aed12f7487a2903717ba4dc4bad3b5c0c2b436
 import javaswingdev.form.Inventario_Actualizar;
 import javaswingdev.form.Inventario_Agregar;
 import javaswingdev.form.Prestamo;
