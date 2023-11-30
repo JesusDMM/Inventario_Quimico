@@ -6,7 +6,7 @@ import javaswingdev.form.Inventario_Actualizar;
 import javaswingdev.form.Inventario_Agregar;
 import javaswingdev.form.Prestamo;
 import javaswingdev.menu.EventMenuSelected;
-import inventario_quimico.login;
+import javax.swing.ImageIcon;
 
 public class Main extends javax.swing.JFrame {
 
@@ -15,6 +15,9 @@ public class Main extends javax.swing.JFrame {
     public Main() {
         initComponents();
         init();
+         ImageIcon icono = new ImageIcon("src\\Recursos\\quimica.png"); // Cambia la ruta por la ubicación real de tu icono
+         setIconImage(icono.getImage());
+        
     }
 
     private void init() {
