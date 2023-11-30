@@ -51,6 +51,7 @@ public class Inventario_Agregar extends javax.swing.JPanel {
         jList1 = new javax.swing.JList<>();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
         jPanel4 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -78,6 +79,7 @@ public class Inventario_Agregar extends javax.swing.JPanel {
         jLabel19 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
+        scrollBar1 = new javaswingdev.swing.scroll.ScrollBar();
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -114,6 +116,8 @@ public class Inventario_Agregar extends javax.swing.JPanel {
         );
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1110, -1));
+
+        jScrollPane3.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 3, 3, new java.awt.Color(204, 51, 0)));
@@ -270,19 +274,27 @@ public class Inventario_Agregar extends javax.swing.JPanel {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 1039, Short.MAX_VALUE))
-                .addGap(56, 56, 56))
+                .addGap(27, 27, 27)
+                .addComponent(scrollBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 573, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(436, 436, 436)
+                        .addComponent(scrollBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 571, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 370, Short.MAX_VALUE)
                 .addGap(46, 46, 46))
         );
 
-        add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 1110, 1030));
+        jScrollPane3.setViewportView(jPanel4);
+
+        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 1100, 600));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -401,6 +413,7 @@ public class Inventario_Agregar extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextField jTextField1;
     private jtextfieldround.JTextFieldRound jTextFieldRound2;
     private jtextfieldround.JTextFieldRound jTextFieldRound3;
@@ -408,6 +421,7 @@ public class Inventario_Agregar extends javax.swing.JPanel {
     private jtextfieldround.JTextFieldRound jTextFieldRound5;
     private jtextfieldround.JTextFieldRound jTextFieldRound6;
     private jtextfieldround.JTextFieldRound jTextFieldRound7;
+    private javaswingdev.swing.scroll.ScrollBar scrollBar1;
     private javaswingdev.swing.table.Table table1;
     // End of variables declaration//GEN-END:variables
 }

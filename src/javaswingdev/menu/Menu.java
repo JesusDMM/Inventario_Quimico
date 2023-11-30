@@ -34,7 +34,7 @@ public class Menu extends JPanel {
         add(scroll);
         addTitle("Inventarios");
         addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.ADD_CIRCLE, "Agregar"));
-        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.EDIT, "Mdificar"));
+        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.EDIT, "Actualizar"));
         addTitle("Prestamos");
         addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.PERSON, "Prestar prodcuto"));  
     }
